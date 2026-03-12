@@ -39,4 +39,9 @@ public class MedicineApiController {
     public void deleteMedicine(@PathVariable Long id) {
         medicineService.deleteMedicine(id);
     }
+
+    @GetMapping("/by-name-starts/{nameStart}")
+    public List<Medicine> findByNameStartingWith(@PathVariable String nameStart){
+        return medicineService.findByNameStartingWith(nameStart);
+    }
 }

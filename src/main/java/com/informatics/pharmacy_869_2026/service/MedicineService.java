@@ -14,4 +14,6 @@ public interface MedicineService {
     Medicine updateMedicine(Medicine medicine, Long id);
 
     void deleteMedicine(Long id);
+
+    List<Medicine> findByNameStartingWith(String nameStart);
 }
