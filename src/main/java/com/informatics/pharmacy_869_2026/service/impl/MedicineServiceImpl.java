@@ -1,7 +1,10 @@
 package com.informatics.pharmacy_869_2026.service.impl;
 
+import com.informatics.pharmacy_869_2026.config.ModelMapperConfig;
 import com.informatics.pharmacy_869_2026.data.entity.Medicine;
 import com.informatics.pharmacy_869_2026.data.repository.MedicineRepository;
+import com.informatics.pharmacy_869_2026.dto.CreateMedicineDto;
+import com.informatics.pharmacy_869_2026.dto.MedicineDto;
 import com.informatics.pharmacy_869_2026.service.MedicineService;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
@@ -15,10 +18,12 @@ public class MedicineServiceImpl implements MedicineService {
 
 
     private final MedicineRepository medicineRepository;
+    private final ModelMapperConfig modelMapperConfig;
 
     @Override
-    public List<Medicine> getMedicines() {
-        return medicineRepository.findAll();
+    public List<MedicineDto> getMedicines() {
+
+        return modelMapperConfig.mapList(medicineRepository.findAll(), MedicineDto.class);
     }
 
     @Override
@@ -27,8 +32,14 @@ public class MedicineServiceImpl implements MedicineService {
     }
 
     @Override
-    public Medicine createMedicine(Medicine medicine) {
-        return medicineRepository.save(medicine);
+    public CreateMedicineDto createMedicine(CreateMedicineDto createMedicineDto) {
+
+        return modelMapperConfig
+                .modelMapper()
+                .map(medicineRepository
+                        .save(modelMapperConfig.modelMapper()
+                                .map(createMedicineDto, Medicine.class))
+                        , CreateMedicineDto.class);
     }
 
     @Override

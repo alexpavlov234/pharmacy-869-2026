@@ -1,15 +1,17 @@
 package com.informatics.pharmacy_869_2026.service;
 
 import com.informatics.pharmacy_869_2026.data.entity.Medicine;
+import com.informatics.pharmacy_869_2026.dto.CreateMedicineDto;
+import com.informatics.pharmacy_869_2026.dto.MedicineDto;
 
 import java.util.List;
 
 public interface MedicineService {
-    List<Medicine> getMedicines();
+    List<MedicineDto> getMedicines();
 
     Medicine getMedicineById(Long id);
 
-    Medicine createMedicine(Medicine medicine);
+    CreateMedicineDto createMedicine(CreateMedicineDto createMedicineDto);
 
     Medicine updateMedicine(Medicine medicine, Long id);
 

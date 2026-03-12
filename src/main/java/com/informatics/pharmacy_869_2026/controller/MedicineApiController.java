@@ -2,6 +2,8 @@ package com.informatics.pharmacy_869_2026.controller;
 
 
 import com.informatics.pharmacy_869_2026.data.entity.Medicine;
+import com.informatics.pharmacy_869_2026.dto.CreateMedicineDto;
+import com.informatics.pharmacy_869_2026.dto.MedicineDto;
 import com.informatics.pharmacy_869_2026.service.MedicineService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
@@ -16,7 +18,7 @@ public class MedicineApiController {
     private final MedicineService medicineService;
 
     @GetMapping
-    public List<Medicine> getMedicines(){
+    public List<MedicineDto> getMedicines(){
         return medicineService.getMedicines();
     }
 
@@ -26,8 +28,8 @@ public class MedicineApiController {
     }
 
     @PostMapping
-    public Medicine createMedicine(@RequestBody Medicine medicine){
-        return medicineService.createMedicine(medicine);
+    public CreateMedicineDto createMedicine(@RequestBody CreateMedicineDto createMedicineDto){
+        return medicineService.createMedicine(createMedicineDto);
     }
 
     @PutMapping("/{id}")
