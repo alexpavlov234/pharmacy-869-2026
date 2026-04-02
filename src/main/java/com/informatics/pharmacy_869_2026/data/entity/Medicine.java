@@ -13,7 +13,9 @@ import java.util.Set;
 @Getter
 @Setter
 public class Medicine extends BaseEntity{
+
     private String name;
+
 
     private BigDecimal price;
 

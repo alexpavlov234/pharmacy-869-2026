@@ -59,6 +59,6 @@ public class MedicineServiceImpl implements MedicineService {
 
     @Override
     public List<Medicine> findByNameStartingWith(String nameStart) {
-        return medicineRepository.findByNameStartingWith(nameStart);
+        return medicineRepository.findByNameStartsWith(nameStart);
     }
 }
